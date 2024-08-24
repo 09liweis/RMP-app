@@ -48,7 +48,7 @@ export default function HomeScreen() {
         >
         </TextInput>
         <Pressable  style={styles.primaryButton} onPress={()=>alert('button pressed')}>
-          <ThemedText type="title">Login</ThemedText>
+          <ThemedText style={{color:'white'}}>Login</ThemedText>
         </Pressable>
       </View>
       </ThemedView>
@@ -66,7 +66,8 @@ const styles = StyleSheet.create({
   },
   formContainer: {
     flex:1,
-    gap: 8,
+    gap: 18,
+
     marginBottom: 8,
   },
   reactLogo: {
@@ -77,15 +78,20 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   credentialInput: {
+    width:"100%",
     height: 40,
-    width: 200,
+  
     borderColor: 'gray',
     borderWidth: 1,
     paddingHorizontal:15,
     borderRadius:15,
   },
   primaryButton:{
-    backgroundColor:'red',
+    flex:1,
+    
+    justifyContent:'center',
+    alignItems:'center',
+    backgroundColor:'blue',
     color:'white',
     borderRadius:15,
     paddingHorizontal:15,
