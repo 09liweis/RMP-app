@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Platform, TextInput,Button } from 'react-native';
+import { Image, StyleSheet, Platform, TextInput,Button,View, Pressable } from 'react-native';
 import {useState} from 'react';
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -23,6 +23,7 @@ export default function HomeScreen() {
        
       </ThemedView>
     <ThemedView style={styles.titleContainer}>
+      <View style={styles.formContainer}>
         <TextInput
           onChangeText={setEmail}
           value={email}
@@ -31,6 +32,8 @@ export default function HomeScreen() {
           textContentType="emailAddress"
           keyboardType='email-address'
           autoCapitalize="none"
+          style={styles.credentialInput  }
+          autoFocus={true}
         >
         </TextInput>
        <TextInput
@@ -41,9 +44,13 @@ export default function HomeScreen() {
           
           autoCapitalize="none"
           secureTextEntry={true}
+          style={styles.credentialInput  }
         >
         </TextInput>
-        <Button title="Login"></Button>
+        <Pressable  style={styles.primaryButton} onPress={()=>alert('button pressed')}>
+          <ThemedText type="title">Login</ThemedText>
+        </Pressable>
+      </View>
       </ThemedView>
         
       
@@ -57,7 +64,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 8,
   },
-  stepContainer: {
+  formContainer: {
+    flex:1,
     gap: 8,
     marginBottom: 8,
   },
@@ -68,4 +76,19 @@ const styles = StyleSheet.create({
     left: 0,
     position: 'absolute',
   },
+  credentialInput: {
+    height: 40,
+    width: 200,
+    borderColor: 'gray',
+    borderWidth: 1,
+    paddingHorizontal:15,
+    borderRadius:15,
+  },
+  primaryButton:{
+    backgroundColor:'red',
+    color:'white',
+    borderRadius:15,
+    paddingHorizontal:15,
+    paddingVertical:10,
+  }
 });
