@@ -1,14 +1,18 @@
 import { Tabs } from 'expo-router';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
+import{ LoginIcon } from '@/components/navigation/loginIcon';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
+
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
+    isLoggedIn ? (
+      <>
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
@@ -32,15 +36,27 @@ export default function TabLayout() {
           ),
         }}
       />
+      </Tabs>
+      </>
+    ) : (
+      <>
+      <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        headerShown: false,
+      }}>
       <Tabs.Screen
         name="login"
         options={{
           title: 'Log in',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <TabBarIcon name={focused ? 'log-in' : 'log-in-outline'} color={color} />
           ),
         }}
       />
     </Tabs>
+    
+    </>
+    )
   );
 }
