@@ -1,33 +1,34 @@
 import { Image, StyleSheet, Platform, TextInput,Button,View, Pressable } from 'react-native';
 import {useState} from 'react';
-import { HelloWave } from '@/components/HelloWave';
+
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import axios from 'axios';
+import { useAuthStore } from '@/stores/AuthStore';
 
-export default function HomeScreen() {
+
+export default function LoginScreen() {
    const [email, setEmail] = useState('');
    const [password,setPassword] = useState('');
-   const [isLoggedIn, setIsLoggedIn] = useState(false);
-   const [error, setError] = useState('');
-   const [token, setToken] = useState('');
-   const tryLogin = () => {
-    console.log('tryLogin', email, password);
-    axios.post('https://rental-management-platform.vercel.app/api/login',{
-      email: email,
-      password: password,
-    }).then(res => {
-      console.log(res.data)
-      if(res.data.success){
-        setIsLoggedIn(true)
-        setToken(res.data.token)
-      }
+  
+   const { login, userToken } = useAuthStore();
+  //  const tryLogin = () => {
+  //   console.log('tryLogin', email, password);
+  //   axios.post('https://rental-management-platform.vercel.app/api/login',{
+  //     email: email,
+  //     password: password,
+  //   }).then(res => {
+  //     console.log(res.data)
+  //     if(res.data.success){
+  //       setIsLoggedIn(true)
+  //       setToken(res.data.token)
+  //     }
 
-    }).catch(err => {
-      console.log(err)
-    })
-   }
+  //   }).catch(err => {
+  //     console.log(err)
+  //   })
+  //  }
 
   return (
     <ParallaxScrollView
@@ -67,10 +68,12 @@ export default function HomeScreen() {
           style={styles.credentialInput  }
         >
         </TextInput>
-        <ThemedText>{token}</ThemedText>
-        <Pressable  style={styles.primaryButton} onPress={tryLogin}>
+        <ThemedText>{userToken}</ThemedText>
+    
+        <Pressable  style={styles.primaryButton} onPress={login}>
           <ThemedText style={{color:'white'}}>Login</ThemedText>
         </Pressable>
+      
       </View>
       </ThemedView>
         
