@@ -1,5 +1,6 @@
 import { Image, StyleSheet, Platform, TextInput,Button,View, Pressable } from 'react-native';
 import {useState} from 'react';
+import { Link } from 'expo-router';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
@@ -73,7 +74,15 @@ export default function LoginScreen() {
         <Pressable  style={styles.primaryButton} onPress={login}>
           <ThemedText style={{color:'white'}}>Login</ThemedText>
         </Pressable>
-      
+
+        <ThemedView>
+          <ThemedText>Don't have an account?&nbsp;
+             <Link href='/register'>
+             <ThemedText className="text-blue-500 underline">Sign up</ThemedText>
+             </Link>
+          </ThemedText>
+          </ThemedView>
+          
       </View>
       </ThemedView>
         
