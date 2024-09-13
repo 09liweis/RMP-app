@@ -30,6 +30,24 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="properties"
+        options={{
+          title: 'Properties',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="rooms"
+        options={{
+          title: 'Rooms',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="explore"
         options={{
           title: 'Explore',
