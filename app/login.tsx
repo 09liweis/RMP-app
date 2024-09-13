@@ -1,6 +1,6 @@
 import { Image, StyleSheet, Platform, TextInput,Button,View, Pressable } from 'react-native';
 import {useState} from 'react';
-import { Link } from 'expo-router';
+import { Link,router } from 'expo-router';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
@@ -30,6 +30,11 @@ export default function LoginScreen() {
   //     console.log(err)
   //   })
   //  }
+
+  const loginAttempt = () => {
+    login();
+    router.replace('/(tabs)')
+  }
 
   return (
     <ParallaxScrollView
@@ -71,7 +76,7 @@ export default function LoginScreen() {
         </TextInput>
         <ThemedText>{userToken}</ThemedText>
     
-        <Pressable  style={styles.primaryButton} onPress={login}>
+        <Pressable  style={styles.primaryButton} onPress={loginAttempt}>
           <ThemedText style={{color:'white'}}>Login</ThemedText>
         </Pressable>
 

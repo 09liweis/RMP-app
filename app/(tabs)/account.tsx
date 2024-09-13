@@ -34,14 +34,14 @@ const account = () => {
      </ThemedView>
   
     <ThemedView>
-      <ThemedText className="text-center">
+      <ThemedText className="text-center text-blue-600">
         Account
       </ThemedText>
     </ThemedView>
      <ThemedView style={styles.buttonContainer}>
        <Pressable
          onPress={tryLogout}
-         className="bg-red-500 p-2 text-center rounded-md w-full"
+         className="bg-teal-500 p-2 text-center rounded-md w-full"
        >
          <ThemedText className="text-white text-center">Sign Out</ThemedText>
        </Pressable>
