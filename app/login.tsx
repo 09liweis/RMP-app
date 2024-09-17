@@ -13,28 +13,23 @@ export default function LoginScreen() {
    const [email, setEmail] = useState('');
    const [password,setPassword] = useState('');
   
-   const { login, userToken } = useAuthStore();
-  //  const tryLogin = () => {
-  //   console.log('tryLogin', email, password);
-  //   axios.post('https://rental-management-platform.vercel.app/api/login',{
-  //     email: email,
-  //     password: password,
-  //   }).then(res => {
-  //     console.log(res.data)
-  //     if(res.data.success){
-  //       setIsLoggedIn(true)
-  //       setToken(res.data.token)
-  //     }
+   const { login, isLoggedIn, userToken } = useAuthStore();
 
-  //   }).catch(err => {
-  //     console.log(err)
-  //   })
-  //  }
-
-  const loginAttempt = () => {
-    login();
-    router.replace('/(tabs)')
-  }
+   const loginAttempt = async () => {
+     try {
+       const success = await login(email,password);
+       if (success) {
+         console.log('User logged in successfully');
+         router.navigate('/');
+       } else {
+         console.log('Login failed');
+         // Handle login failure (e.g., show an error message)
+       }
+     } catch (error) {
+       console.error('Login error:', error);
+       // Handle login error (e.g., show an error message)
+     }
+   };
 
   return (
     <ParallaxScrollView

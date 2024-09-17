@@ -11,13 +11,10 @@ import { useAuthStore } from '@/stores/AuthStore';
 
 export default function PropertyLayout() {
   
-
-
-
   return (
     <ThemeProvider value={DefaultTheme} >
       <Stack>
-        <Stack.Screen name="index" options={{headerShown:true,headerTitle:'Properties list'}} />
+        <Stack.Screen name="index" options={{headerShown:false,headerTitle:'Properties list'}} />
      
       </Stack>
     </ThemeProvider>

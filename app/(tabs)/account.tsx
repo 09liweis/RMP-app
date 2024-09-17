@@ -9,17 +9,17 @@ import { useAuthStore } from '@/stores/AuthStore';
 import { useRouter } from 'expo-router';
 const account = () => {
   const router = useRouter();
-  const { logout, isLoggedIn } = useAuthStore();
+  const { logout, isLoggedIn, userToken } = useAuthStore();
  
 
   // Update the tryLogout function
-  const tryLogout = () => {
+  const tryLogout = async () => {
     console.log('tryLogout');
-    logout();
+    await logout();
+    
+    router.navigate('/login');
     console.log('store: isLoggedIn: ', isLoggedIn);
     
-    // After logging out, navigate to the login screen
-    router.replace('/login');
   };
 
 
@@ -37,6 +37,7 @@ const account = () => {
       <ThemedText className="text-center text-blue-600">
         Account
       </ThemedText>
+      <ThemedText>User Token: {userToken}</ThemedText>
     </ThemedView>
      <ThemedView style={styles.buttonContainer}>
        <Pressable

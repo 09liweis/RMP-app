@@ -5,7 +5,6 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { AuthProvider } from '@/context/AuthProvider';
-import {LoginScreen} from '@/screens/Auth/LoginScreen';
 
 export default function HomeScreen() {
   const [isLoading, setIsLoading] = useState(true);
