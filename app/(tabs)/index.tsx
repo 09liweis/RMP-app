@@ -1,12 +1,17 @@
 import { Image, StyleSheet, Platform } from 'react-native';
-
+import { useState } from 'react';
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { AuthProvider } from '@/context/AuthProvider';
 
 export default function HomeScreen() {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
+    <AuthProvider>
+    
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
       headerImage={
@@ -16,7 +21,8 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
+
+        <ThemedText type="title">Rental Property Management Platform !</ThemedText>
         <HelloWave />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
@@ -47,6 +53,7 @@ export default function HomeScreen() {
         </ThemedText>
       </ThemedView>
     </ParallaxScrollView>
+    </AuthProvider>
   );
 }
 
